@@ -1,4 +1,4 @@
-package hkcam
+package homecamera
 
 import (
 	"fmt"
@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/brutella/hkcam/ffmpeg"
+	"github.com/jliu666/home-camera/ffmpeg"
 )
 
 // SetupFFMPEGStreaming configures a camera to use ffmpeg to stream video.

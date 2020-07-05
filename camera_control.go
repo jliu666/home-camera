@@ -1,4 +1,4 @@
-package hkcam
+package homecamera
 
 import (
 	"github.com/brutella/hc/log"

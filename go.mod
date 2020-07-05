@@ -1,4 +1,4 @@
-module github.com/brutella/hkcam
+module github.com/jliu666/home-camera
 
 go 1.12
 

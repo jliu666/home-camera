@@ -9,8 +9,8 @@ import (
 	"image"
 	"runtime"
 
-	"github.com/brutella/hkcam"
-	"github.com/brutella/hkcam/ffmpeg"
+	homecamera "github.com/jliu666/home-camera"
+	"github.com/jliu666/home-camera/ffmpeg"
 )
 
 func main() {
@@ -63,10 +63,10 @@ func main() {
 		MultiStream:      *multiStream,
 	}
 
-	ffmpeg := hkcam.SetupFFMPEGStreaming(cam, cfg)
+	ffmpeg := homecamera.SetupFFMPEGStreaming(cam, cfg)
 
 	// Add a custom camera control service to record snapshots
-	cc := hkcam.NewCameraControl()
+	cc := homecamera.NewCameraControl()
 	cam.Control.AddCharacteristic(cc.Assets.Characteristic)
 	cam.Control.AddCharacteristic(cc.GetAsset.Characteristic)
 	cam.Control.AddCharacteristic(cc.DeleteAssets.Characteristic)
