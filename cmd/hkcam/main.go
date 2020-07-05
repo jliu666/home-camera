@@ -65,24 +65,12 @@ func main() {
 
 	ffmpeg := homecamera.SetupFFMPEGStreaming(cam, cfg)
 
-	// Add a custom camera control service to record snapshots
-	cc := homecamera.NewCameraControl()
-	cam.Control.AddCharacteristic(cc.Assets.Characteristic)
-	cam.Control.AddCharacteristic(cc.GetAsset.Characteristic)
-	cam.Control.AddCharacteristic(cc.DeleteAssets.Characteristic)
-	cam.Control.AddCharacteristic(cc.TakeSnapshot.Characteristic)
-
 	t, err := hc.NewIPTransport(hc.Config{StoragePath: *dataDir}, cam.Accessory)
 	if err != nil {
 		log.Info.Panic(err)
 	}
 
 	t.CameraSnapshotReq = func(width, height uint) (*image.Image, error) {
-		return ffmpeg.Snapshot(width, height)
-	}
-
-	cc.SetupWithDir(*dataDir)
-	cc.CameraSnapshotReq = func(width, height uint) (*image.Image, error) {
 		return ffmpeg.Snapshot(width, height)
 	}
 
